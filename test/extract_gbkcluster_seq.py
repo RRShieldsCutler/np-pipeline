@@ -34,7 +34,8 @@ def main():
 			elif InfileName.endswith('.gbk'): #double check to only convert the right files
 				FileNum += 1 #keep track of the number of cluster files converted
 				HeaderF = Header + InfileName
-				OutFileName = 'sequence_' + InfileName + '.txt'
+				OutFileName = 'seq_' + InfileName + '.txt'
+				OutFileName = OutFileName.replace('.gbk', '')
 				OutFile = open(OutFileName,'w')
 				OutFile.write(HeaderF + '\n') #use the filename to ID the file on the first line
 				Infile = open(InfileName, 'r')
@@ -52,7 +53,7 @@ def main():
 	# after each file is processed in the current working dir,
 	# move all the new files into the cluster_sequences folder
 	for newfile in os.listdir('.'):
-		if newfile.startswith('sequence'):
+		if newfile.startswith('seq'):
 			shutil.move(newfile, os.path.join('cluster_sequences'))
 	# print to screen the number of files converted
 	sys.stderr.write("Converted %d file(s)\n" % FileNum)
