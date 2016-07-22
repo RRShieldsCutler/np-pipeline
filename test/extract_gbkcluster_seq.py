@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 Usage = """
-ExtractSeqs2.py - version 1.0
+extract_gbkcluster_seq.py - version 1.0
 Extract the DNA sequence from the *.gbk output files of antiSMASH
 and return a txt file with only the concatenated sequence.
 Usage:
@@ -11,7 +11,7 @@ usage = 'python extract_gbkcluster_seq.py *.gbk'
 
 import sys
 import os
-import shutil
+# import shutil
 import os.path
 # make folder within current dir to store new txt files
 if "cluster_sequences" not in os.listdir("."):
@@ -19,7 +19,7 @@ if "cluster_sequences" not in os.listdir("."):
 	
 def main():
 	if len(sys.argv)<1: #only run if there are actually files that match
-		print Usage	
+		print(usage)
 	else:
 		FileList= sys.argv[1:]
 		Header = 'cluster sequence from '
@@ -47,9 +47,9 @@ def main():
 					elif line.startswith('ORIGIN'):
 						sequence_begin = True #identifies the line starting with ORIGIN as sequence start
 			else:
-				print usage
-			Infile.close()
-			OutFile.close()
+				print(usage)
+				Infile.close()
+				OutFile.close()
 ##this section below not needed after fixing the os.path.join function above
 	# after each file is processed in the current working dir,
 	# move all the new files into the cluster_sequences folder
@@ -58,7 +58,7 @@ def main():
 # 			shutil.move(newfile, os.path.join('cluster_sequences'))
 	
 	# print to screen the number of files converted
-	sys.stderr.write("Converted %d file(s)\n" % FileNum)
+# 	sys.stderr.write("Converted %d file(s)\n" % FileNum)
 	
 	
 if __name__ == '__main__':
