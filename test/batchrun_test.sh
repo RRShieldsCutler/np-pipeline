@@ -15,7 +15,7 @@ then
 	i=0
 	for FILE in *.fna; do
 		FILENAME=${FILE%.*}
-		python /project/flatiron/robin/antismash/run_antismash.py -c 48 \
+		python /project/flatiron/robin/antismash/run_antismash.py -c 96 \
 		./$FILE \
 		--outputfolder ./antismash_results/$FILENAME/ \
 		--inclusive --disable-BioSQL --disable-svg --disable-embl --disable-write_metabolicmodel \
@@ -24,13 +24,6 @@ then
 		let i++
 	done
 fi
-cd . antismash_results/
-for DIR in . ; do
-	cd . $DIR
-	python /project/flatiron/robin/projects/np_project/np-pipeline/test/extract_gbkcluster_seq.py \
-	*.gbk;
-	cd ..
-done
 echo ' '
 echo "finally finished antiSMASHing" $i "genomes."
 echo ' '
