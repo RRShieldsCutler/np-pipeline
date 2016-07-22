@@ -3,14 +3,15 @@
 # runs antismash iteratively on a set of fna files in a single
 # directory, and generates a folder for each output file
 
-echo "Are you currently located in the directory containing your *.fna files?"
-read -p "...and you have the antismash_results directory? (type 'y' if you wanna antiSMASH!)" -n 1 -r
+echo "Please confirm that there is no existing 'antismash_results' directory here"
+read -p "...and that you are in the directory containing your .fna files? (type 'y' if you wanna antiSMASH!)" -n 1 -r
 echo    
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 # run antismash script on each .fna genome file
 # should be in format 'GCF_000020425.1_ASM2042v1_genomic.fna'
 # puts each results set into a new directory named by the accession number without the '.1'
+	mkdir antismash_results/
 	i=0
 	for FILE in *.fna; do
 		FILENAME=${FILE%.*}
