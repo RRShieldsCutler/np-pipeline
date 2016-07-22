@@ -15,12 +15,14 @@ then
 	i=0
 	for FILE in *.fna; do
 		FILENAME=${FILE%.*}
-		mkdir $FILENAME/
 		python /project/flatiron/robin/antismash/run_antismash.py -c 48 \
 		./$FILE \
 		--outputfolder ./antismash_results/$FILENAME/ \
 		--inclusive --disable-BioSQL --disable-svg --disable-embl --disable-write_metabolicmodel \
 		--disable-xls --disable-html --disable-BiosynML;
+	# after running antismash, extract the sequences from the .gbk files and put into new directory
+		python /project/flatiron/robin/projects/np_project/np-pipeline/test/extract_gbkcluster_seq.py \
+		./antismash_results/$FILENAME/*.gbk; 
 		let i++
 	done
 fi
