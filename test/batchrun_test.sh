@@ -24,9 +24,9 @@ then
 		let i++
 	done
 fi
-cd ./antismash_results/
-for DIR in ./; do
-	cd ./DIR
+cd . antismash_results/
+for DIR in . ; do
+	cd . $DIR
 	python /project/flatiron/robin/projects/np_project/np-pipeline/test/extract_gbkcluster_seq.py \
 	*.gbk;
 	cd ..
