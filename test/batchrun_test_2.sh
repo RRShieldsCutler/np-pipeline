@@ -26,9 +26,10 @@ then
 fi
 cd ./antismash_results/
 for DIR in ./GCF*/; do
+	cd ./$DIR/
 	python /project/flatiron/robin/projects/np_project/np-pipeline/test/extract_gbkcluster_seq.py \
-	$DIR/*.gbk;
-	cd ..
+	*.gbk;
+	cd ../
 done
 echo ' '
 echo "finally finished antiSMASHing" $i "genomes."
