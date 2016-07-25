@@ -20,15 +20,14 @@ then
 		--outputfolder ./antismash_results/$FILENAME/ \
 		--inclusive --disable-BioSQL --disable-svg --disable-embl --disable-write_metabolicmodel \
 		--disable-xls --disable-html --disable-BiosynML;
-	# after running antismash, extract the sequences from the .gbk files and put into new directory
 		let i++
 	done
 fi
 cd ./antismash_results/
-for DIR in ./GCF*/; do
-	cd ./$DIR/
-	python /project/flatiron/robin/projects/np_project/np-pipeline/test/extract_gbkcluster_seq.py \
-	*.gbk;
+for DIR in GCF*/; do
+	cd $DIR/
+	python /project/flatiron/robin/projects/np_project/np-pipeline/test/extract_gbkcluster_seq.py *.gbk;
+	let i++
 	cd ../
 done
 echo ' '

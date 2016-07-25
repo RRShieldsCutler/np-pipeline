@@ -14,12 +14,13 @@ import os
 # import shutil
 import os.path
 # make folder within current dir to store new txt files
-if "cluster_sequences" not in os.listdir("."):
-	os.mkdir("cluster_sequences")
+# if "cluster_sequences" not in os.listdir("."):
+# 	os.mkdir("cluster_sequences")
 	
 def main():
 	if len(sys.argv)<1: #only run if there are actually files that match
 		print(usage)
+		pass
 	else:
 		FileList= sys.argv[1:]
 		Header = 'cluster sequence from '
@@ -32,6 +33,8 @@ def main():
 			if InfileName.endswith('final.gbk'):
 				pass
 			elif InfileName.endswith('.gbk'): #double check to only convert the right files
+				if "cluster_sequences" not in os.listdir("."):
+					os.mkdir("cluster_sequences")
 				FileNum += 1 #keep track of the number of cluster files converted
 				HeaderF = Header + InfileName
 				OutFileName = 'seq_' + InfileName + '.txt'
@@ -39,7 +42,6 @@ def main():
 				OutFile = open(os.path.join('cluster_sequences', OutFileName),'w')
 				OutFile.write(HeaderF + '\n') #use the filename to ID the file on the first line
 				Infile = open(InfileName, 'r')
-
 				for line in Infile:
 					if sequence_begin: #only do this if ORIGIN starts the line
 						#joins together only the characters on the line in the set atcg
