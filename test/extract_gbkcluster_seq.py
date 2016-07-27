@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 
-Usage = """
-extract_gbkcluster_seq.py - version 1.0
-Extract the DNA sequence from the *.gbk output files of antiSMASH
-and return a txt file with only the concatenated sequence.
-Usage:
-  extract_gbkcluster_seq.py *.gbk
-"""
+# extract_gbkcluster_seq.py - version 1.0
+# Extract the DNA sequence from the *.gbk output files of antiSMASH
+# and return a txt file with only the concatenated sequence.
+
 usage = 'python extract_gbkcluster_seq.py *.gbk'
 
 import sys
@@ -23,7 +20,7 @@ def main():
 		pass
 	else:
 		FileList= sys.argv[1:]
-		Header = 'cluster sequence from '
+		Header = '>cluster sequence from '
 		#define the start of the sequence by the ORIGIN line
 		seqstart = 'ORIGIN'
 		sequence_begin = False
@@ -61,7 +58,6 @@ def main():
 	
 	# print to screen the number of files converted
 # 	sys.stderr.write("Converted %d file(s)\n" % FileNum)
-	
-	
+		
 if __name__ == '__main__':
 	main()

@@ -31,6 +31,4 @@ for DIR in GCF*/; do
 	cd ../
 done
 echo ' '
-echo "finally finished antiSMASHing" $i "genomes."
-echo ' '
 exit
