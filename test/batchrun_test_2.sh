@@ -18,7 +18,7 @@ then
 		python /project/flatiron/robin/antismash/run_antismash.py -c 48 \
 		./$FILE \
 		--outputfolder ./antismash_results/$FILENAME/ \
-		--inclusive --disable-BioSQL --disable-svg --disable-embl --disable-write_metabolicmodel \
+		--inclusive --clusterblast --asf --disable-BioSQL --disable-svg --disable-embl --disable-write_metabolicmodel \
 		--disable-xls --disable-html --disable-BiosynML;
 		let i++
 	done
