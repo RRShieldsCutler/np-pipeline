@@ -22,6 +22,8 @@ then
 		--disable-xls --disable-html --disable-BiosynML;
 		let i++
 	done
+else
+	exit
 fi
 cd ./antismash_results/
 for DIR in GCF*/; do
