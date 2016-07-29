@@ -28,6 +28,8 @@ def main():
 		seqstart = 'ORIGIN'
 		sequence_begin = False
 		FileNum=0
+		# this loop reads the BGC summary txt document and pulls columns for ID, type, and range
+		# then writes them into a new tab-delimited text file in the cluster_sequences folder
 		for file in os.listdir('txt'):
 			if file.endswith('_BGC.txt'):
 				BGCt = pd.read_csv(os.path.join('txt',file),delimiter='\t',header=0,usecols=[0,1,3])
