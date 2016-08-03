@@ -20,30 +20,20 @@ def main():
 		print(usage)
 		pass
 	else:
-		if "cluster_sequences" not in os.listdir("."):
-			os.mkdir("cluster_sequences")
 		FileList= sys.argv[1:]
 		Header = '>cluster sequence from '
 		#define the start of the sequence by the ORIGIN line
 		seqstart = 'ORIGIN'
 		sequence_begin = False
 		FileNum=0
-		# this loop reads the BGC summary txt document and pulls columns for ID, type, and range
-		# then writes them into a new tab-delimited text file in the cluster_sequences folder
-		for file in os.listdir('txt'):
-			if file.endswith('_BGC.txt'):
-				BGCt = pd.read_csv(os.path.join('txt',file),delimiter='\t',header=0,usecols=[0,1,3])
-				BGCtablename = "abbrev_" + file
-				BGCof = open(os.path.join('cluster_sequences',BGCtablename),'w')
-				BGCof.write(' ')
-				BGCof.close()
-				BGCt.to_csv(os.path.join('cluster_sequences', BGCtablename),sep='\t',index=False)
 		# work through each file called by the command line
 		for InfileName in FileList:
 			if InfileName.endswith('final.gbk'):
 				pass
 			elif InfileName.endswith('.gbk'): #double check to only convert the right files
 				FileNum += 1 #keep track of the number of cluster files converted
+				if "cluster_sequences" not in os.listdir("."):
+					os.mkdir("cluster_sequences")
 				HeaderF = Header + InfileName
 				OutFileName = 'seq_' + InfileName + '.txt'
 				OutFileName = OutFileName.replace('.gbk','')
@@ -60,6 +50,19 @@ def main():
 				print(usage)
 				Infile.close()
 				OutFile.close()
+		# this loop reads the BGC summary txt document and pulls columns for ID, type, and range
+		# then writes them into a new tab-delimited text file in the cluster_sequences folder
+		if "txt" in os.listdir('.'):
+			for file in os.listdir('txt'):
+				if file.endswith('_BGC.txt'):
+					BGCt = pd.read_csv(os.path.join('txt',file),delimiter='\t',header=0,usecols=[0,1,3])
+					BGCtablename = "abbrev_" + file
+					BGCof = open(os.path.join('cluster_sequences',BGCtablename),'w')
+					BGCof.write(' ')
+					BGCof.close()
+					BGCt.to_csv(os.path.join('cluster_sequences', BGCtablename),sep='\t',index=False)
+		else:
+			pass
 ##this section below not needed after fixing the os.path.join function above
 	# after each file is processed in the current working dir,
 	# move all the new files into the cluster_sequences folder
