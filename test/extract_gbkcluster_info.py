@@ -8,12 +8,8 @@ usage = 'python extract_gbkcluster_seq.py *.gbk'
 
 import sys
 import os
-# import shutil
 import pandas as pd
 import os.path
-# make folder within current dir to store new txt files
-# if "cluster_sequences" not in os.listdir("."):
-# 	os.mkdir("cluster_sequences")
 	
 def main():
 	if len(sys.argv)<1: #only run if there are actually files that match
@@ -52,24 +48,25 @@ def main():
 				OutFile.close()
 		# this loop reads the BGC summary txt document and pulls columns for ID, type, and range
 		# then writes them into a new tab-delimited text file in the cluster_sequences folder
+		gcfname = os.path.realpath('.')
 		if "txt" in os.listdir('.'):
 			for file in os.listdir('txt'):
 				if file.endswith('_BGC.txt'):
+					gcftmp = open('tempids.txt', 'w')
+					gcfname = gcfname.split('/')[-1]
+					gcftmp.write('GCF_ID' + '\n' + gcfname.replace('_genomic',''))
+					gcftmp.close()
+					gcfdf = pd.read_csv('tempids.txt',header=0)
 					BGCt = pd.read_csv(os.path.join('txt',file),delimiter='\t',header=0,usecols=[0,1,3])
 					BGCtablename = "abbrev_" + file
+					BGCt.insert(0,'GCF_ID',gcfdf)
 					BGCof = open(os.path.join('cluster_sequences',BGCtablename),'w')
 					BGCof.write(' ')
 					BGCof.close()
-					BGCt.to_csv(os.path.join('cluster_sequences', BGCtablename),sep='\t',index=False)
+					BGCt.to_csv(os.path.join('cluster_sequences', BGCtablename),sep='\t',index=False,na_rep='-')
+					os.remove('tempids.txt')
 		else:
 			pass
-##this section below not needed after fixing the os.path.join function above
-	# after each file is processed in the current working dir,
-	# move all the new files into the cluster_sequences folder
-# 	for newfile in os.listdir('.'):
-# 		if newfile.startswith('seq_'):
-# 			shutil.move(newfile, os.path.join('cluster_sequences'))
-	
 	# print to screen the number of files converted
 # 	sys.stderr.write("Converted %d file(s)\n" % FileNum)
 		
