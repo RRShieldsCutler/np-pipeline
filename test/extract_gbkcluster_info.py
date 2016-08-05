@@ -54,7 +54,8 @@ def main():
 				if file.endswith('_BGC.txt'):
 					gcftmp = open('tempids.txt', 'w')
 					gcfname = gcfname.split('/')[-1]
-					gcftmp.write('GCF_ID' + '\n' + gcfname.replace('_genomic',''))
+					gcfname = gcfname.replace('_genomic','')
+					gcftmp.write('GCF_ID' + '\n' + gcfname)
 					gcftmp.close()
 					gcfdf = pd.read_csv('tempids.txt',header=0)
 					BGCt = pd.read_csv(os.path.join('txt',file),delimiter='\t',header=0,usecols=[0,1,3])
@@ -63,7 +64,7 @@ def main():
 					BGCof = open(os.path.join('cluster_sequences',BGCtablename),'w')
 					BGCof.write(' ')
 					BGCof.close()
-					BGCt.to_csv(os.path.join('cluster_sequences', BGCtablename),sep='\t',index=False,na_rep='-')
+					BGCt.to_csv(os.path.join('cluster_sequences', BGCtablename),sep='\t',index=False,na_rep=gcfname)
 					os.remove('tempids.txt')
 		else:
 			pass
