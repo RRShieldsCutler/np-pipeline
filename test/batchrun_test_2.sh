@@ -28,7 +28,7 @@ fi
 cd ./antismash_results/
 for DIR in GCF*/; do
 	cd $DIR/
-	python /project/flatiron/robin/projects/np_project/np-pipeline/test/extract_gbkcluster_info.py *.gbk;
+	extract_gbkcluster_info.py *.gbk;
 	let i++
 	cd ../
 done
