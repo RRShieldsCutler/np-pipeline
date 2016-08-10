@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/bash
 
 # runs antismash iteratively on a set of fna files in a single
 # directory, and generates a folder for each output file
