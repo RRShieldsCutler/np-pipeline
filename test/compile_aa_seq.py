@@ -5,6 +5,8 @@ usage = "execute from antismash results directory to compile each genome's clust
 import os, os.path
 
 def compile_aa():
+	if "compiled_cluster_aa_seqs" not in os.listdir('.'):
+		os.mkdir("compiled_cluster_aa_seqs")
 	for dir in os.listdir('.'):
 		if dir.startswith('GCF'):
 			if "cluster_aa_sequences" not in os.listdir(dir):
@@ -12,7 +14,7 @@ def compile_aa():
 			else:
 				fname = dir.strip('_genomic')
 				outfilename = fname + '_cluster_aa_seqs.txt'
-				outfile = open(os.path.join(dir, outfilename), 'w')
+				outfile = open(os.path.join("compiled_cluster_aa_seqs", outfilename), 'w')
 				for file in os.listdir(os.path.join(dir,'cluster_aa_sequences/')):
 					if file.endswith('.txt'):
 						with open(os.path.join(dir,'cluster_aa_sequences/',file), 'r') as infile:
