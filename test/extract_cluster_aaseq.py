@@ -35,7 +35,7 @@ def main():
 				if "cluster_aa_sequences" not in os.listdir("."):
 					os.mkdir("cluster_aa_sequences")
 				HeaderF = Header + InfileName.replace('.gbk','')
-				OutFileName = 'aa_' + InfileName + '.txt'
+				OutFileName = 'aa_' + InfileName + '.mpfa'
 				OutFileName = OutFileName.replace('.gbk','')
 				OutFile = open(os.path.join('cluster_aa_sequences', OutFileName),'w')
 				Infile = open(InfileName, 'r')

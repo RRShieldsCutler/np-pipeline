@@ -13,10 +13,10 @@ def compile_aa():
 				pass
 			else:
 				fname = dir.strip('_genomic')
-				outfilename = fname + '_cluster_aa_seqs.txt'
+				outfilename = fname + '_cluster_aa_seqs.mpfa'
 				outfile = open(os.path.join("compiled_cluster_aa_seqs", outfilename), 'w')
 				for file in os.listdir(os.path.join(dir,'cluster_aa_sequences/')):
-					if file.endswith('.txt'):
+					if file.endswith('.mpfa'):
 						with open(os.path.join(dir,'cluster_aa_sequences/',file), 'r') as infile:
 							for line in infile:
 								outfile.write(line)
