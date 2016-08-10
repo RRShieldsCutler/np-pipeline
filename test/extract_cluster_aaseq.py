@@ -45,7 +45,7 @@ def main():
 							p = re.compile(r"^(\s+)(/locus_tag=)\"(ctg)(\d_\w+)\"")
 							m = p.search(line) # searches using the regex defined above
 							OutfileM = ''.join(m.group(3,4))
-							OutFile.write('\n' + HeaderF + '_') #use the filename to ID the file on the first line
+							OutFile.write(HeaderF + '_') #use the filename to ID the file on the first line
 							OutFile.write(OutfileM + '\n')
 						if line.startswith('                     /translation'):
 							sequence_begin = True
@@ -57,13 +57,8 @@ def main():
 								OutFile.write(Outaa)
 							if line.startswith('                     '):
 								OutFile.write(''.join([ch for ch in line if ch in set(('G,A,L,M,F,W,K,Q,E,S,P,V,I,C,Y,H,R,N,D,T'))]))
-	# 							if not line.startswith('                     /translation'):
-	# 								pass
-	# 							if line.startswith('                     /note="Glimmer'):
-	# 								pass
-	# 							else:
-	# 								OutFile.write(''.join([ch for ch in line if ch in set(('G,A,L,M,F,W,K,Q,E,S,P,V,I,C,Y,H,R,N,D,T'))]))
 							else:
+								OutFile.write('\n')
 								sequence_begin = False
 								if line.startswith('     CDS  '):
 									title_begin = True
@@ -78,7 +73,7 @@ def main():
 				print(usage)
 				Infile.close()
 				OutFile.close()
-
+	
 	# print to screen the number of files converted
 # 	sys.stdout.write("Converted %d file(s)\n" % FileNum)
 		
