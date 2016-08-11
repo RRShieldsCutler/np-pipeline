@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-# Robin Shields-Cutler
+# by Robin Shields-Cutler
 # extract_cluster_aaseq.py - version 1.0
 # August 2016
-# Parses .gbk output files of antiSMASH, yielding a txt file with each module's 
+# Parses .gbk output files of antiSMASH 3.0, yielding a txt file with each module's 
 # coding sequence (CDS) listed in an faa-like file. The cluster module ID is listed as:
 # >NC_011593.1.cluster001_ctg1_orf00220 for example.
 

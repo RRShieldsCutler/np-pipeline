@@ -27,7 +27,7 @@ else
 fi
 cd ./antismash_results/
 for DIR in GCF*/; do
-	cd $DIR/
+	cd $DIR
 	extract_gbkcluster_info.py *.gbk;
 	let i++
 	cd ../

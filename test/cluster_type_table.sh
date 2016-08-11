@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/bash
 
 # execute from inside the 'antismash_results' directory
 # goes through each genome and runs the cluster type extraction script
