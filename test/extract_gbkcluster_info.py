@@ -17,7 +17,7 @@ def main():
 		pass
 	else:
 		FileList= sys.argv[1:]
-		Header = '>cluster sequence from '
+		Header = '>'
 		#define the start of the sequence by the ORIGIN line
 		seqstart = 'ORIGIN'
 		sequence_begin = False
@@ -30,7 +30,7 @@ def main():
 				FileNum += 1 #keep track of the number of cluster files converted
 				if "cluster_sequences" not in os.listdir("."):
 					os.mkdir("cluster_sequences")
-				HeaderF = Header + InfileName
+				HeaderF = Header + InfileName.replace('.gbk','')
 				OutFileName = 'seq_' + InfileName + '.txt'
 				OutFileName = OutFileName.replace('.gbk','')
 				OutFile = open(os.path.join('cluster_sequences', OutFileName),'w')
