@@ -28,10 +28,12 @@ def main():
 		assembly_version = os.path.basename(args.input).split('_genomic')[0]
 		with open(args.output, 'w') if args.output != '-' else sys.stdout as outf:
 			for header, sequence in fasta_gen.read():
-				ncbi_tid = db.get_ncbi_tid_from_refseq_accession_version(header.split('_')[0])[0]
+				ncbi_tid = db.get_ncbi_tid_from_refseq_accession_version(header.split('_cluster')[0])[0]
 				organism = nt.gg_lineage(ncbi_tid)
-				outf.write('>ncbi_tid|%d|ref|%s|organism|%s|\n' % (ncbi_tid, header, organism))
-				outf.write(sequence[:5]+'\n')
+				genus_species = organism.split(';')[-1]
+				genus_species = genus_species.replace('s__','')
+				outf.write('>ncbi_tid|%d|ref|%s|organism|%s|\n' % (ncbi_tid, header, genus_species))
+				outf.write(sequence+'\n')
 
 if __name__ == '__main__':
 	main()
