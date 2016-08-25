@@ -10,5 +10,6 @@ if (length(args)==0) {
 }
 blastout = read.delim(args[1], header=FALSE)
 colnames(blastout) = c('query','subject','pident','length','mismatch','gapopen','qstart','qend','sstart','send','evalue','bitscore')
-blastout = filter(blastout, evalue != 0.0) # removes self-self match rows
+blastout = filter(blastout, as.character(query) != as.character(subject)) # removes self-self match rows
+# blastout = filter(blastout, bitscore > 50)
 write.table(blastout, file=args[2], quote=FALSE, sep='\t', row.names=FALSE)
