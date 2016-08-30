@@ -4,7 +4,7 @@
 # directory, and generates a folder for each output file
 
 echo "Please confirm that there is no existing 'antismash_results' directory here"
-read -p "...and that you are in the directory containing your .fna files? (type 'y' if you wanna antiSMASH!)" -n 1 -r
+read -p "...and that you are in the directory containing your .fna files? (type 'y' if you wanna antiSMASH)" -n 1 -r
 echo    
 if [[ $REPLY =~ ^[Yy]$ ]]
 then

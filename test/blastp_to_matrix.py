@@ -17,7 +17,7 @@ from collections import defaultdict
 
 
 def make_arg_parser():
-	parser = argparse.ArgumentParser(description='Get least common ancestor for alignments in unsorted BAM/SAM file')
+	parser = argparse.ArgumentParser(description='Convert blastp output txt table to a scores matrix in csv format')
 	parser.add_argument('-i', '--input', help='The blast output file to process.', required=True, type=str)
 	parser.add_argument('-s', '--score', help='Which score to enter into matrix: "pident", "evalue", or "bitscore"', required=False, type=str, default='bitscore')
 	parser.add_argument('-t', '--threshold', help='The threshold (float) for entry into matrix.', required=False, type=float, default=1)

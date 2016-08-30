@@ -9,7 +9,7 @@ from ninja_dojo.taxonomy import NCBITree
 
 # The arg parser for this wrapper
 def make_arg_parser():
-	parser = argparse.ArgumentParser(description='Reformat multi-fasta file header to include refseq id and ncbi_tid')
+	parser = argparse.ArgumentParser(description='Reformat multi-fasta file header to include refseq id, ncbi_tid, and Genus_species')
 	parser.add_argument('-i', '--input', help='Input is a multi-cluster FASTA file.', default='-')
 	parser.add_argument('-o', '--output', help='If nothing is given, then stdout, else write to file', default='-')
 	parser.add_argument('-v', '--verbose', help='Print extra statistics', action='store_true', default=False)
