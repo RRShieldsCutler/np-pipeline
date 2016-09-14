@@ -16,5 +16,6 @@ then
 		cd ../
 	done
 fi
+echo " "
 echo "Extracted cluster sequences from" $i "genomes."
 exit

@@ -18,7 +18,7 @@ then
 		python /project/flatiron/robin/antismash/run_antismash.py -c 96 \
 		./$FILE \
 		--outputfolder ./antismash_results/$FILENAME/ \
-		--inclusive --disable-BioSQL --disable-svg --disable-embl --disable-write_metabolicmodel \
+		--inclusive --clusterblast --asf --disable-BioSQL --disable-svg --disable-embl --disable-write_metabolicmodel \
 		--disable-xls --disable-html --disable-BiosynML;
 	# after running antismash, extract the sequences from the .gbk files and put into new directory
 		let i++

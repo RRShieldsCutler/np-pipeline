@@ -9,7 +9,7 @@ from ninja_dojo.database import RefSeqDatabase
 
 # The arg parser for this wrapper
 def make_arg_parser():
-    parser = argparse.ArgumentParser(description='Get least common ancestor for alignments in unsorted BAM/SAM file')
+    parser = argparse.ArgumentParser(description='Reformat fasta header to include refseq, assembly, and ncbi_tid')
     parser.add_argument('-i', '--input', help='Input is a FASTA file.', default='-')
     parser.add_argument('-o', '--output', help='If nothing is given, then stdout, else write to file', default='-')
     parser.add_argument('-v', '--verbose', help='Print extra statistics', action='store_true', default=False)
@@ -30,7 +30,7 @@ def main():
             for header, sequence in fasta_gen.read():
                 ncbi_tid = db.get_ncbi_tid_from_refseq_accession_version(header.split()[0])[0]
                 outf.write('>ncbi_tid|%d|assembly|%s|ref|%s\n' % (ncbi_tid, assembly_version, header))
-                outf.write(sequence[:5]+'\n')
+                outf.write(sequence+'\n')
 
 if __name__ == '__main__':
     main()
