@@ -34,9 +34,9 @@ def main():
 		elif args.tid != '-':
 			ncbi_tid = int(args.tid)
 		organism = nt.green_genes_lineage(ncbi_tid)
-		genus_species = organism.split(';')[-1]
-		genus_species = genus_species.replace('s__','')
-		outf.write('>ncbi_tid|%d|organism|%s\n' % (ncbi_tid, genus_species))
+# 		genus_species = organism.split(';')[-1]
+# 		genus_species = genus_species.replace('s__','')
+		outf.write('>ncbi_tid|%d|organism|%s\n' % (ncbi_tid, organism))
 		outf.write('\n')
 
 if __name__ == '__main__':
