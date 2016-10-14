@@ -15,7 +15,7 @@ then
 	i=0
 	for FILE in *.fna; do
 		FILENAME=${FILE%.*}
-		python /project/flatiron/robin/antismash/run_antismash.py -c 48 \
+		python /export/scratch/robin/antismash/run_antismash.py -c 48 \
 		./$FILE \
 		--outputfolder ./antismash_results/$FILENAME/ \
 		--inclusive --clusterblast --asf --disable-BioSQL --disable-svg --disable-embl --disable-write_metabolicmodel \
