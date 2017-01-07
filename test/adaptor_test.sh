@@ -18,8 +18,13 @@ cd ../
 cd nextera
 shi7en --adaptor Nextera --flash False --convert_fasta False --combine_fasta False -trim_l 50 -i ../ --debug
 cd ../
+echo 'TruSeq2'
 ls -l truseq2/temp/axe/
+echo 'TruSeq3'
 ls -l truseq3/temp/axe/
+echo 'TruSeq3-2'
 ls -l truseq3-2/temp/axe/
+echo 'Nextera'
 ls -l nextera/temp/axe/
 echo "Which is the smallest?"
+
